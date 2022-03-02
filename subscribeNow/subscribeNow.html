@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <title>Document</title>
     <style>
         *{
@@ -115,9 +112,14 @@
     </div>
     <div class="product-description">
         <div class="description-view-return">
-            <span id="des1">description</span>
-            <span id="des2">view plans</span>
-            <span id="des3">returns policy</span>
+            <span class="des">description</span>
+            <span class="des">view plans</span>
+            <span class="des">returns policy</span>
+        </div>
+        <div class="des-view-return-data">
+            <div class="des-data">this is description</div>
+            <div class="des-data">this is view plans</div>
+            <div class="des-data">this is return policy</div>
         </div>
     </div>
 
@@ -129,13 +131,29 @@
 
         function desciptionChanger() {
             console.log("pa");
-            var paf = document.getElementById("des1")
-            paf
-            paf.addEventListener('mousehover', changeColor)
+            let buttons = document.querySelectorAll(".des")
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', changeColor) 
+                button.addEventListener('mouseleave', changeColor)                
+                button.addEventListener('click', changeData)
+            });
             function changeColor() {
-                this.style.backgroundColor = "red"
+                if (this.style.backgroundColor === "orange") {
+                    this.style.backgroundColor = ""
+                }else{
+                    this.style.backgroundColor = "orange"
+                }
+            }
+            function changeData() {
+                console.log( this.innerHTML);
             }
         }
+        function changeText() {
+            
+        }
+
+
+
         desciptionChanger()
     </script>
 </body>
