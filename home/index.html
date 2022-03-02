@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #navbar {
+        background-color: rgba(255, 255, 255, 255);
+        height: 80px;
+        width: 100%;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        /* border: 4px solid gray; */
+        position: fixed;
+        top: 0;
+      }
+      #navbar > div {
+        margin: 3vh;
+        /* background-color:white; */
+        width: 30%;
+      }
+      img {
+        width: 50%;
+        height: 90%;
+        margin-left: 27%;
+      }
+      .subscribe {
+        color: #eea13d;
+        font-family: "Open Sans", sans-serif;
+      }
+      .search_cart {
+        display: flex;
+        flex-direction: row-reverse;
+        /* background-color: aquamarine; */
+      }
+      .search_cart > div {
+        margin: 3vh;
+        height: 100%;
+      }
+      #search_pop_up {
+        display: none;
+        height: 260px;
+        width: 100%;
+        /* border: 1px solid gray; */
+        padding: 4vh;
+        position: fixed;
+        top: 0;
+      }
+      #search_input {
+        margin-left: 2vh;
+        width: 91%;
+        height: 100px;
+        font-size: 5vh;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-family: "Open Sans", sans-serif;
+        color: black;
+        margin-right: 6vh;
+      }
+      .cancle {
+        height: 30px;
+        /* border: 1px solid salmon; */
+        display: flex;
+        flex-direction: row-reverse;
+        font-family: "Open Sans", sans-serif;
+        margin-right: 7vh;
+      }
+      .cancle + p {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.5vh;
+      }
+      .options {
+        /* border: 1px solid gray; */
+        height: fit-content;
+        width: 190px;
+        position: relative;
+        top: 80px;
+        margin-left: 82%;
+        text-align: center;
+        display: none;
+        /* display:flex;;
+          flex-direction: row-reverse; */
+      }
+      .options > ul {
+        list-style-type: none;
+      }
+      .first_slide_show{
+        background-color:#cecece;
+        height:400px;
+        border:1px solid black; 
+      }
+      
+     
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="main">
+      <div id="slideshow"> <img src="" alt="" class="slideshow_one"></div>
+    </div>
+  </body>
+</html>
+<script type = 'module'>
+  import navbar from './componants/navbar.js';
+  
+  let header = document.getElementById("header");
+     header.innerHTML = navbar();
+
+  const search = document.getElementById('search').addEventListener('click',search_pop_come)
+  function search_pop_come() {
+    let search = document.getElementById("search_pop_up");
+    let navbar = document.getElementById("navbar");
+    search.style.display = "block";
+    navbar.style.display = "none";
+  }
+
+  const cancle = document.querySelector('.cancle').addEventListener('click', bring_navbar_again)
+  function bring_navbar_again() {
+    let search = document.getElementById("search_pop_up");
+    let navbar = document.getElementById("navbar");
+    search.style.display = "none";
+    navbar.style.display = "flex";
+  }
+
+  let profile = document.getElementById("profile").addEventListener('mouseover',bring_list)
+  function bring_list() {
+    let options = document.querySelector(".options");
+    options.style.display = "inline-block";
+  }
+
+  document.getElementById("profile").addEventListener('mouseout',go_list)
+  function go_list() {
+    let options = document.querySelector(".options");
+    options.style.display = "none";
+  }
+
+  let imgs = ["https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-bAG-Reveal_2cdfb5d0-eee9-4bcc-abf9-957fa44d0dfa_2048x.png", "https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Skincare-Reveal--3.png?v=1641707966"]
+
+
+  //  let a = document.getElementById('slideshow');
+   let a = document.querySelector('.slideshow_one');
+
+   let i = 0;
+   setInterval(function(){
+      a.src = imgs[i];
+      i++;
+      if (i == imgs.length ){
+        i=0;
+      }
+   },1000)
+  //  console.log(a);
+
+
+</script>
