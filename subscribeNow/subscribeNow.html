@@ -117,20 +117,19 @@
             <span class="des">returns policy</span>
         </div>
         <div class="des-view-return-data">
-            <div class="des-data">this is description</div>
-            <div class="des-data">this is view plans</div>
-            <div class="des-data">this is return policy</div>
+            <div id="description">this is description</div>
+            <div id="view">this is view plans</div>
+            <div id="returns">this is return policy</div>
         </div>
     </div>
 
     <script type="module">
         import navbar from "../home/componants/navbar.js"
-        var nav = document.getElementById("header")
+        let nav = document.getElementById("header")
         nav.innerHTML = navbar()
 
 
         function desciptionChanger() {
-            console.log("pa");
             let buttons = document.querySelectorAll(".des")
             buttons.forEach(button => {
                 button.addEventListener('mouseover', changeColor) 
@@ -145,15 +144,24 @@
                 }
             }
             function changeData() {
-                console.log( this.innerHTML);
+                let div = document.querySelector(".des-view-return-data")
+                let divs = div.querySelectorAll("div")
+                divs.forEach(div => {
+                    div.style.visibility = "hidden"
+                });
+                if (this) {
+                    let string =this.textContent.split(" ")
+                    let tag = document.getElementById(string[0])
+                    tag.style.visibility = "visible"    
+                }else {
+                    divs[0].style.visibility = "visible"
+
+                }
+                
+             
             }
+        changeData()
         }
-        function changeText() {
-            
-        }
-
-
-
         desciptionChanger()
     </script>
 </body>
