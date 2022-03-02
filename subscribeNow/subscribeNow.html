@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            margin: 0 4%;
+            border: 2px saddlebrown solid;
+            padding: 0 1%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main>div{
+            padding: 1%;
+        }
+        #product-img-show{
+            flex: 2;
+        }
+
+        #product-img{
+            max-width: 100%;
+        }
+        #product-info{
+            flex:3;
+        }
+        #product-info>div{
+            margin-bottom: 1%;
+        }
+        .plans{
+            display: flex;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        .add-to-cart{
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 2% 0;
+            margin: 2% 0;
+        }
+        .quantity-btn{
+            border: .5px black solid;
+            margin: 1% 75% 1% 0%;
+            padding: 2% 1%;
+        }
+        .quantity-btn>input{
+            border: 0;
+        }
+        .description-view-return{
+            text-align: center;
+            margin: 4%;
+        }
+        .description-view-return>span{
+            margin: 1%;
+            padding: 1%;
+            border: 2px orange solid;
+            border-radius: 50px; 
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="product-img-show">
+            <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-6.png?v=1646072005" alt="" id="product-img">
+        </div>
+        <div id="product-info">
+            <div>
+                <p>Home</p>
+            </div>
+            <div>
+                <h2>The Empower-HER March Fab Bag</h2>
+            </div>
+            <div>
+
+            </div>
+            <div>
+                <h2>Rs. 599.00</h2>
+            </div>
+            <div>
+                <p>plans</p>
+                <div class="plans">
+                    <div>1 MONTH</div>
+                    <div>3 MONTHS</div>
+                </div>
+                <div class="quantity-btn">
+                    <span>-</span>
+                    <input type="text">
+                    <span>+</span>
+                </div>
+                <div class="add-to-cart">
+                    ADD TO CART
+                </div>
+            </div>
+            <div class="socials">
+                <span>T</span>
+                <span>F</span>
+                <span>G</span>
+            </div>
+        </div>
+    </div>
+    <div class="product-description">
+        <div class="description-view-return">
+            <span id="des1">description</span>
+            <span id="des2">view plans</span>
+            <span id="des3">returns policy</span>
+        </div>
+    </div>
+
+    <script>
+        function desciptionChanger() {
+            console.log("pa");
+            var paf = document.getElementById("des1")
+            paf
+            paf.addEventListener('mousehover', changeColor)
+            function changeColor() {
+                this.style.backgroundColor = "red"
+            }
+        }
+        desciptionChanger()
+    </script>
+</body>
+</html>
