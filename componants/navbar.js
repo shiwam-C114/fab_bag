@@ -8,7 +8,9 @@
       </div>
 
       <div id="navbar">
+      <a href = "../subscribeNow/subscribeNow.html">
         <div class="subscribe"><h3>SUBSCRIBE NOW</h3></div>
+      </a>
         <div class="logo">
           <img
             src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO_96ac9306-4c81-4ab8-8d2b-4e818eed7f76_2048x.png?v=1606482289"
