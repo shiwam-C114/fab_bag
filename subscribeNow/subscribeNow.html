@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- <link rel="stylesheet" href="../styles/main.css"> -->
+    <!-- <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
     <title>Document</title>
     <style>
         *{
@@ -66,6 +66,10 @@
             border: 2px orange solid;
             border-radius: 50px; 
         }
+        #quantity-input-box{
+            max-width: 70%;
+            border: 2px solid red;
+        }
         
     </style>
 </head>
@@ -96,7 +100,7 @@
                 </div>
                 <div class="quantity-btn">
                     <span>-</span>
-                    <input type="text">
+                    <input type="text" id="quantity-input-box">
                     <span>+</span>
                 </div>
                 <div class="add-to-cart">
@@ -126,7 +130,7 @@
     <script type="module">
         import navbar from "../home/componants/navbar.js"
         let nav = document.getElementById("header")
-        nav.innerHTML = navbar()
+        // nav.innerHTML = navbar()
 
 
         function desciptionChanger() {
