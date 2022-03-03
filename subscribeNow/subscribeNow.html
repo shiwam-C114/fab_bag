@@ -70,6 +70,13 @@
         max-width: 70%;
         border: 2px solid red;
       }
+      .plans>div{
+          background-color: #e1e1e1;
+          padding: 10px 5px;
+      }
+      .price-display{
+          display: flex;
+      }
     </style>
   </head>
   <body>
@@ -89,21 +96,26 @@
           <h2>The Empower-HER March Fab Bag</h2>
         </div>
         <div></div>
-        <div>
-          <h2>Rs. 599.00</h2>
+        <div class="price-display">
+            <!-- &nbsp for space -->
+            <h2>Rs. &nbsp;</h2>        
+          <h2 id="product-price">599</h2>
+          <h2>.00</h2> 
         </div>
         <div>
           <p>plans</p>
           <div class="plans">
-            <div>1 MONTH</div>
-            <div>3 MONTHS</div>
+            <div onclick="chagePrice(this)">1 MONTH</div>
+            <div onclick="chagePrice(this)">3 MONTHS</div>
           </div>
           <div class="quantity-btn">
             <span>-</span>
             <input type="text" id="quantity-input-box" />
             <span>+</span>
           </div>
-          <div class="add-to-cart">ADD TO CART</div>
+          <a href="../addToCart/addToCart.html">
+            <div class="add-to-cart" onclick="updateCart()">ADD TO CART</div>
+          </a>
         </div>
         <div class="socials">
           <span>T</span>
@@ -125,7 +137,39 @@
       </div>
     </div>
 
+    <script>
+            // <------------------ update cart function below ----------------> //
+
+    function updateCart(){ // have to change the structue to take more items
+        console.log("this is update cart");
+        let quantity = document.getElementById("quantity-input-box").value
+        let price =  document.getElementById("product-price").innerText
+        let obj = {
+            price: price,
+            quantity: quantity
+        }
+        localStorage.setItem("cart", JSON.stringify(obj))
+        
+    }
+
+    //  <------------------------- changePrice ------------------------------>
+    function chagePrice(ths){
+        // console.log("change clicked");
+        var currentPrice =  document.getElementById("product-price")
+        // console.log(currentPrice);
+        if (ths.innerHTML === "1 MONTH") {
+            console.log("1 MONTH");
+            currentPrice.textContent = "599"
+        }else if (ths.innerHTML === "3 MONTHS") {
+            console.log("3");
+            currentPrice.textContent = "1,599"
+        }
+    }
+    </script>
+
+<!-- script 2  -->
     <script type="module">
+
       import navbar from "../componants/navbar.js";
       let nav = document.getElementById("header");
       // nav.innerHTML = navbar()
@@ -161,6 +205,7 @@
         changeData();
       }
       desciptionChanger();
+
     </script>
   </body>
 </html>
