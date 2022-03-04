@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping - FABBAG - Checkout</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .main{
+            display: flex;
+            padding: 4%;
+            margin: 1%;
+        }
+        .contact-and-shipment{
+            flex: 3;
+            padding: 3% 7% 0 0;
+        }
+        .cart-detail{
+            flex: 2;
+        }
+        .logo{
+            text-align: center;
+            height: 70px;
+            margin: 0 0 5% 0;
+        }
+        .logo img{
+            max-width: 100%;
+            max-height: 70%;
+        }
+        .logo p {
+            margin: 10px 0 0 0;
+        }
+        .contact-shipment-container{
+            padding: 0 100px;
+            border: 1px solid black;
+        }
+        .contact-shipment-container>div{
+            display: flex;
+            text-align: center;
+            padding: 10px;
+        }
+        .shipping-method{
+            margin:  5% 0 1% 0;
+            padding: 0 100px;
+            border: 1px solid black;
+        }
+        .shipping-method>div{
+            display: flex;
+            text-align: center;
+            padding: 10px;
+        }
+        .continue-to-payment{
+            display: flex;
+            justify-content: space-between;
+        }
+        .continue{
+            background-color: black;
+            color: aliceblue;
+            padding: 20px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="contact-and-shipment">
+            <div class="logo">
+                <a href="../home/index.html">
+                    <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO-FINAL.png?10214" alt="">
+                </a>
+                <!-- &nbsp is for space -->
+                <p>Cart  &nbsp >  &nbsp Information  &nbsp >  &nbsp Shipping  &nbsp >  &nbsp Payment</p>
+            </div>
+            <div class="contact-shipment-container">
+                <div class="contact">Contact  email@email.com</div>
+                <hr>
+                <div class="ship-to">Ship to  address sefsvs</div>
+            </div>
+            <div class="shipping-method">
+                <h3>Shipping method</h3>
+                <div class="contact">Free standard shipping ()</div>
+                <hr>
+                <div class="ship-to">cash on delivery ( Rs. 100/- Convenience Charge)</div>
+            </div>
+            <div class="continue-to-payment">
+                <p> < Return to information</p>
+                <div class="continue">Continue to payment</div>
+            </div>
+        </div>
+        <div class="cart-detail">
+            <div class="cart-products"></div>
+            <div class="discount"></div>
+            <div class="price-info"></div>
+        </div>
+    </div>
+</body>
+</html>
