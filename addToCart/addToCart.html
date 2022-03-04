@@ -157,7 +157,8 @@
         document.querySelector(".cart-body").innerHTML = msg.outerHTML
       }
     }
-    displayCart()
+    displayCart();
+
     function remove(id) {
       console.log(id);
       let cart = JSON.parse(localStorage.getItem("cart"));
