@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar</title>
+    <title>homepage</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -22,6 +22,7 @@
         display: flex;
         justify-content: center;
         /* border: 4px solid gray; */
+        /* border: 1px solid gray; */
         position: fixed;
         top: 0;
       }
@@ -30,8 +31,8 @@
         /* background-color:white; */
         width: 30%;
       }
-      img {
-        width: 50%;
+      .logo>img {
+        width: 60%;
         height: 90%;
         margin-left: 27%;
       }
@@ -47,6 +48,7 @@
       .search_cart > div {
         margin: 3vh;
         height: 100%;
+        /* background-color: teal; */
       }
       #search_pop_up {
         display: none;
@@ -95,23 +97,374 @@
       }
       .options > ul {
         list-style-type: none;
+        /* display:; */
       }
-      .first_slide_show{
+
+       /* navbar end */
+
+
+
+      #slideshow{
+        position:relative;
+        height:450px;
+        width:100%;
         background-color:#cecece;
-        height:400px;
-        border:1px solid black; 
+      }
+      .slides{
+        width:100%;
+        height:100%;
+        display:none;
+      }
+      .slides>img{
+        height:100%;
+        width:100%;
+      }
+
+     .gap{
+       height:11.8vh;
+     }
+     .arrow{
+       position:absolute;
+       top:20px;
+       font-weight:bold;
+       font-size: 4vh;
+       background-color:rgba(255, 255, 255, 0.521);
+       padding:3vh;
+     }
+     .next{
+       left:10px;
+       top:40%;
+     }
+     .prev{
+       right:10px;
+       top:40%;
+     }
+     .heading{
+       margin-top:4vh;
+       background-color: aliceblue;
+       height:80px;
+       /* padding:5vh; */
+       text-align:center;
+     }
+     .products{
+       display:flex;
+       /* flex-wrap: wrap; */
+     }
+     .product_boxes{
+       width:50vh;
+       /* height:50vh; */
+       height:60vh;
+       /* border:1px solid black; */
+       margin:2vh;
+       display:flex;
+       flex-direction:column;
+     }
+    .product_boxes_images{
+      height:90%;
+      border-radius: 7vh;
+      border:3px solid rgb(192, 114, 25);
+      /* overflow:hidden; */
+      /* background-color:rgb(24, 45, 65); */
+    }
+    .product_boxes_images>img{
+      height:100%;
+      max-width:100%;
+      border-radius: 7vh;
+    }
+    .products_box_title{
+      height:10%;
+      text-align:center;
+      padding:2vh;
+      /* background-color:pink; */
+    }
+    .plans{
+      display:flex;
+      padding-left:10vh;
+    }
+    .plans>div{
+      width:300px;
+      height:500px;
+      margin:3vh;
+      /* border:2px solid black; */
+    }
+    .box_of_plans>div{
+      border:1px solid gray;
+      height:22%;
+      text-align:center;
+    }
+    .box_of_plans>div:nth-child(3){
+      height:42.2%;
+    }
+    .box_of_plans>div:nth-child(4){
+      /* padding:1vh; */
+      background-color:#e5b95f;
+      height:11%;
+    }
+    .box_of_plans button{
+      width:90%;
+      margin:auto;
+      margin-top:1vh;
+      height:5vh;
+      background-color: #e5b95f;
+      border:1px solid white;
+    }
+
+    /* previos bags */
+
+
+    .products_in_prev_bags{
+      display:flex;
+      width:80%;
+      height:300px;
+      margin:auto;
+      /* border:1px solid black; */
+    }
+    .products_in_prev_bags>div{
+      width:250px;
+      height:150px;
+      /* border:1px solid black; */
+      margin:4vh;
+    }
+    .gifs_products>img{
+      height:100%;
+      width:100%;
+    }
+
+    /* testimonials */
+
+    .testimonials_heading{
+      text-align:center;
+      margin-bottom:9vh;
+    }
+    .testimonials{
+      height:500px;
+      background-color:#efe4ca;
+      padding:3vh;
+    }
+    .testimonials_text{
+      /* border:1px solid black; */
+      margin:auto;
+      width:80%;
+      padding:4vh;
+      line-height: 2.3;
+      text-align:center;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* trending now */
+
+    .trending_now{
+      height:200px;
+      display:flex;
+    }
+    .trending_now_pictures{
+      width:12.5%;
+    }
+    .trending_now_pictures>img{
+      width:100%;
+      height:100%;
+    }
+
+
+    /* gap */
+
+     .after_trending_gap{
+      height:10vh;
+     }
+
+      /* brand slideshow */
+
+      .brand_slideshow_wrapper{
+        height:30vh;
+        background-color: #e5b95f;
+        padding-top:7vh;
+      }
+      .brand_pictures{
+        width:70%;
+        height:90%;
+        /* background-color: gray; */
+        margin:auto;
+        display:flex;
+      }
+      .logo_brands{
+        /* border:1px solid yellow; */
+        width:20%;
+        height:100%;
+        border:2px solid black;
+        margin-left:3vh;
+        border-radius:2vh;
       }
       
-     
+      .logo_brands img{
+        width: 100%;
+        height:100%;
+        border-radius:2vh;
+      }
     </style>
   </head>
   <body>
+    <div id="wraper">
     <div id="header"></div>
-    <div id="main">
-      <div id="slideshow"> <img src="" alt="" class="slideshow_one"></div>
+    <div class="gap"></div>
+
+
+    <div id="web_body">
+      <div id="slideshow">
+
+          <div class="slides"> <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-bAG-Reveal_2cdfb5d0-eee9-4bcc-abf9-957fa44d0dfa_2048x.png" alt=""> </div>
+          <div class="slides"> <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Skincare-Reveal--3.png?v=1641707966" alt=""> </div>
+      <span class="arrow prev">&#10095</span>
+      <span class="arrow next">&#10094</span> 
+          
+      </div>
+
+      <!-- second row -->
+
+      <div class ='heading'> <h1>WHAT'S IN THE BAG</h1> </div>
+      
+      <div class = 'products'>
+        <div class="product_boxes">
+        <div class="product_boxes_images"> <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Makeup-Reveal-1_e08f804a-9c64-49fb-8f8c-6560cccefd73_2048x.png?v=1646073642" alt=""></div>
+        <div class="products_box_title">EYELINER OF YOUR CHOICE!*</div>
+      </div>
+      <div class="product_boxes">
+        <div class="product_boxes_images"> <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Makeup-Reveal-2_c014da6e-b4a9-46e2-a341-314c9fd3b632_2048x.png?v=1646073698" alt=""></div>
+        <div class="products_box_title">LIQUID LIPSTICK OF YOUR CHOICE!*</div>
+      </div>
+      <div class="product_boxes">
+        <div class="product_boxes_images"> <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Skincare-Reveal-1_6d054eeb-1d99-4d40-833f-e5b98c0f1bac_2048x.png?v=1646073752" alt=""></div>
+        <div class="products_box_title">BRIGHTNING & RADIANCE MASK</div>
+      </div>
+      <div class="product_boxes">
+        <div class="product_boxes_images"> <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/What_s-In-The-Bag--Skincare-Reveal-2_21ff1d7c-003b-4aef-8874-f42616233969_2048x.png?v=1646073809" alt=""></div>
+        <div class="products_box_title">BRIGHTNING & RADIANCE MASK</div>
+      </div>
+        <!-- <div></div> -->
+        <!-- <div></div> -->
+      </div>
+
+
+      <!-- subscription plans -->
+
+
+      <div class = 'heading'> <h1>SUBSCRIPTION</h1></div>
+
+      <div class = 'plans'>
+        <div class="box_of_plans">
+          <div><b> 1 MONTH </b><br>SUBSCRIPTION</div>
+          <div> <b>RS. 599.00</b> <br> /per month </div>
+          <div> ONE TIME PAYMENT  <br> RS. 599.00</div> 
+          <div>
+            <button>ADD TO CART</button>
+          </div>
+        </div>
+        <div class="box_of_plans">
+          <div><b> 1 MONTH </b><br>SUBSCRIPTION</div>
+          <div> <b>RS. 599.00</b> <br> /per month </div>
+          <div> ONE TIME PAYMENT  <br> RS. 599.00</div> 
+          <div>
+            <button>ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+
+       <!-- previous bags -->
+
+      <div class="heading"> <h1>PREVIOUS BAGS </h1> </div>
+
+      <div class="products_in_prev_bags">
+
+        <div class="gifs_products">
+           <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Skincare-Reveal-2_large.gif?v=1644395072" alt="">
+          </div>
+        <div class="gifs_products">
+           <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Skincare-Reveal--3_large.png?v=1641707966" alt="">
+          </div>
+        <div class="gifs_products">
+           <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-3_large.gif?v=1638191014" alt="">
+          </div>
+        <div class="gifs_products">
+           <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPageBanner--Skincare-Reveal-4_1_large.gif?v=1636696484" alt="">
+          </div>
+        <!-- <div class="gifs_products"></div> -->
+
+      </div>
+    
+      <!-- testimonials -->
+
+
+      <div class="testimonials">
+        <div class ='testimonials_heading'> <h1>TESTIMONIALS</h1></div>
+        <div class="testimonials_text">
+          <span>I am highly impressed with the idea of surprising the customers by leaving them to guess,
+             whats inside the Bag. Surprises brings <br> excitement and I am always excited to receive my Fab Bag.
+              First of all I should say that the Bags are awesome and each time I got my <br> Fab Bag, I was really happy
+               to find whats inside it. Really satisfied! :)</span>
+        </div>
+      </div>
+
+
+      <!-- trending now -->
+
+      <div class="heading"> <h1># TRENDINGNOW AT THE GOSSIP CORNER </h1> </div>
+       
+      <div class="trending_now">
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/275009748_668161524509398_7307422291541447494_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=4YcI16TekMgAX-2qYzj&_nc_oc=AQlOgAkqzVtbJD2DIfjZFkkwoPrlATXsszKFfal8HtjaPDJZYyIgeJD_VEFk_f-uvgc&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT8BVr4Ku21ZqWH1efwED3p5_e6kM1iq2CstcgQG52ZtMQ&oe=62250AAF" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274920366_944161806288937_2875954376922031598_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=GBtlrXqY9WQAX_gdJb-&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT8yWu_TE12XnBSQogIAFbreJganQoEuQRgpAHkF71lTZQ&oe=62256636" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274965749_5183687685017128_2798726564266165845_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=HH_NToW9WaQAX_O4btm&_nc_oc=AQn8lyAzdaO1mawaUWK2H-u59G7Y5S6ASr-eEkf3joqcMw6Szy0tOayLlmNBNozhOlM&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT-NJp62J5A42hJJ2asX1cK9cDJ_sC6lPmWi3M3L3dNdvA&oe=622562DD" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274868794_970516546997950_209060874259771807_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=LO3ESTm2RdIAX-OHIha&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT-yy4mBQyzBFnH7tpoOotHBJxRNxjPe90KySetry-UPaQ&oe=62244EC4" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.29350-15/274890482_370247308267642_7328862836853165417_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=N13z7iEUQGUAX_z4SWU&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT8tkEORPJZ4QIgNNAhSjCCJxPteU1zPWUDn_PDTq8OV9g&oe=6226116E" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274816992_474956034335943_4305591245724105651_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=U9ekJJO9kPoAX-wWHN1&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT_lRpfI_Lz8Z8U1qYuMEvZO5ITBZUUtwyU_Nq8hDNY1Pw&oe=62251D1B" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274849867_1020928375191807_4228735663559757908_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=cp8CV5PriwMAX9wS8T2&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT91xbL71UiKwyCtI5A2xKb3BRxCJwo4GZ0uboOKfIkbpQ&oe=6224A695" alt="">
+       </div>
+        <div class="trending_now_pictures">
+           <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274718575_108749041656934_2008781131014126943_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=D5FEKnS5zuMAX-hwSmL&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT_lJAC_o1uQK6vimYJP4XyksZmzKEK6dkywP482szWCDA&oe=62252702" alt="">
+       </div>
+
+      </div>
+
+      <div class="after_trending_gap"></div>
+
+      <div class="brand_slideshow_wrapper">
+          <div class="brand_pictures">
+            <div class="logo_brands">
+                <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/sugar_1_160x160.jpg?v=1548837170" alt="">
+            </div>
+            <div class="logo_brands">
+                <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/LLW1vAyf_400x400_36a490d2-defb-4c90-898d-2af5215e8433_160x160.jpg?v=1578730298" alt="">
+            </div>
+            <div class="logo_brands">
+                <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/6256280-43d286588b4beafb0e4a423acf72a620-medium_jpg_5e3480ef-0e7a-4aea-88d0-c48379ad9837_160x160.jpg?v=1599290601" alt="">
+            </div>
+            <div class="logo_brands">
+                <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Baiser_India_Logo_160x160.jpg?v=1625063066" alt="">
+            </div>
+            <div class="logo_brands">
+                <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/WOC_Beauty_Logo_160x160.jpg?v=1602225835" alt="">
+            </div>
+
+      </div>
     </div>
+    
+  </div>
   </body>
 </html>
+
+
 <script type = 'module'>
   import navbar from '../componants/navbar.js';
   
@@ -146,21 +499,21 @@
     options.style.display = "none";
   }
 
-  let imgs = ["https://cdn.shopify.com/s/files/1/0052/7551/6995/files/Homepage-Banner-bAG-Reveal_2cdfb5d0-eee9-4bcc-abf9-957fa44d0dfa_2048x.png", "https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Skincare-Reveal--3.png?v=1641707966"]
+  // let next = document.getElementsByClassName('slides').addEventListener()
+ 
+  
+  let flag = 0;
+   let prev = document.querySelector('.prev').addEventListener('click', controller);
 
 
-  //  let a = document.getElementById('slideshow');
-   let a = document.querySelector('.slideshow_one');
+  function controller() {
 
-   let i = 0;
-   setInterval(function(){
-      a.src = imgs[i];
-      i++;
-      if (i == imgs.length ){
-        i=0;
-      }
-   },1000)
-  //  console.log(a);
+  }
 
+  function slideshow(num){
+   let slides = document.getElementsByClassName('slides');
+   slides[num].style.display = 'block';
+ }
+ slideshow(flag)
 
 </script>
