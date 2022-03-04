@@ -60,6 +60,9 @@
         width: auto;
         border-radius: 4px;
       }
+      a{
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -67,8 +70,7 @@
       <div class="cart-container">
         <div class="cart-title"><h1>My Cart</h1></div>
         <div class="cart-body">
-          <div class="cart-product-info">
-              
+          <div class="cart-product-info">  
             <table>
               <thead>
                 <tr>
@@ -113,7 +115,9 @@
               <div>Rs. 1000</div>
             </div>
             <div class="update-cart-btn">UPDATE CART</div>
-            <div class="check-out-btn">CHECK OUT</div>
+            <a href="../shipping/shipping.html">
+              <div class="check-out-btn">CHECK OUT</div>
+            </a>
           </div>
         </div>
       </div>
@@ -121,7 +125,7 @@
   </body>
 
   <script>
-    //   have to take data from te local storage and addto cart page accordingly
+    //   have to take data from te local storage and  show on addto cart page accordingly
     
   </script>
 

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkOutPage</title>
+    <style>
+        #container{
+            display:flex;
+            height:fit-content;
+        }
+        #container>div{
+            width:50%;
+            border:1px solid black;
+        }
+
+        /* left  side */
+
+
+        .left{
+            padding-left:18vh;
+        }
+
+        .contact_line{
+            font-family: 'Open Sans', sans-serif;
+            font-size:3vh;
+        }
+        lable{
+            font-family: 'Open Sans', sans-serif;
+        }
+        .contact_div{
+            margin-bottom:6vh;
+        }
+        .contact_information, 
+        .user_company_name,
+        .use_address,
+        .use_apartment,
+        .user_phone_number{
+
+            width:87%;
+            padding:2vh;
+            border-radius: 1vh;
+            margin-top:2vh;
+            margin-bottom: 1vh;
+            border:1px solid #cecece;
+            font-family: 'Open Sans', sans-serif;
+        }
+        #select_contry{
+            width:91%;
+            padding:2vh;
+            border-radius: 1vh;
+            margin-top:2vh;
+            margin-bottom: 1vh;
+            border:1px solid #cecece;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .user_name{
+            width:41.5%;
+            padding:1.3vh;
+            margin-right:2vh;
+            border-radius: 1vh;
+            border:1px solid #cecece;
+            margin-top:2vh;
+            margin-bottom: 1vh;
+            font-family: 'Open Sans', sans-serif;
+        }
+        #state_options,.user_city_name,.user_pincode{
+            padding:2vh;
+            border-radius: 1vh;
+            margin:1vh;
+            width:24.3vh;
+            border:1px solid #cecece;
+            margin-top:2vh;
+            margin-bottom: 1vh;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* submit  */
+
+        .submit{
+            display:flex;
+            flex-direction: row-reverse;
+        }
+        .continue_to_shopping{
+            height:8vh;
+            width:24vh;
+            background-color:black;
+            margin-right:8vh;
+            border-radius: 1vh;
+            color:white;
+            font-family: 'Open Sans', sans-serif;
+            font-size:2vh;
+        }
+
+        /* horizontal line  */
+
+        hr{
+            /* background-color:#cecece;
+            color:#cecece; */
+            margin-top:7vh;
+            border:0.2px solid #cecece;
+            width:90%;
+        }
+        .bottom_texts{
+            font-size:1.7vh;
+            margin-left:3vh;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="left">
+            <div class="contact_div">
+                <lable class="contact_line">Contact information</lable>
+                <br>
+                <input class="contact_information" type="text"></input>
+                <br>
+                <input type="checkbox">
+                <lable>Email me with news and offers</lable>
+
+            </div>
+
+            <div>
+                <p>Shipping address </p>
+                <select name="choose_contry" id="select_contry" Placeholder="Country/region">
+                    <option value="india"> India</option>
+                </select>
+
+                <!-- name -->
+                <input type="text" Placeholder="First name" class="user_name"><input type="text" Placeholder="Last name" class="user_name">
+
+                <input type="text" Placeholder ='Company (optional)' class="user_company_name">
+                <input type="text" Placeholder ='Address' class="use_address">
+                <input type="text" Placeholder ='Apartement, Suite, etc. (optional)' class="use_apartment">
+                <input type="text" Placeholder ='City' class="user_city_name">
+
+                 <select name="state_options" id="state_options">
+                     <option value="">State</option>
+                     <option value="Andaman_and_Nicobar_Islands"> Andaman and Nicobar Islands</option>
+                     <option value="Andhra_Pradesh"> Andhra Pradesh </option>
+                     <option value="Assam"> Assam</option>
+                     <option value="Bihar">Bihar</option>
+                     <option value="Chandigarh"> Chandigarh</option>
+                     <option value="Chhattishgarh">Chhattishgarh </option>
+                     <option value="Dadra_and_Nagar_Haveli">Dadra and Nagar Haveli</option>
+                     <option value="Daman_and_Diu">Daman and Diu</option>
+                     <option value="Delhi">Delhi</option>
+                     <option value="Goa">Goa</option>
+                     <option value="Gujarat">Gujarat</option>
+                     <option value="Haryana">Haryana </option>
+                     <option value="Himachal_Pradesh">Himachal Pradesh</option>
+                     <option value="Jamnu_and_Kashmir">Jamnu and Kashmir</option>
+                     <option value="Jharkhand">Jharkhand</option>
+                     <option value="Kerala">Kerala</option>
+                     <option value="Karnataka">Karnataka</option>
+                     <option value="WestBengal">WestBengal</option>
+                     <option value="Ladakh">Ladakh</option>
+                     <option value="Nagaland">Nagaland</option>
+                     <option value="Mizoram">Mizoram</option>
+                     <option value="Odisha">Odisha</option>
+                     <option value="Sikkim">Sikkim</option>
+                     <option value="Tamilnadu">Tamilnadu</option>
+                     <option value="Telengana">Telengana</option>
+                     <option value="Uttar_Pradesh">Uttar Pradesh</option>
+                     <option value="Uttarakhand">Uttarakhand</option>
+                     <option value="Tripura">Tripura</option>
+                     <option value="Rajasthan">Rajasthan</option>
+                     <option value="Maharastra">Maharastra</option>
+                 </select>
+
+                 <input type="text" Placeholder ='PIN code' class="user_pincode">
+                 <input type="text" Placeholder ='Phone' class="user_phone_number">
+                    <br>
+                 <input type="checkbox">
+                 <lable>	Save this information for next time</lable>
+            </div>
+
+            <div class="submit">
+                <button class = 'continue_to_shopping'> continue to shipping</button>
+            </div>
+
+            <hr>
+            <span class = 'bottom_texts'>Refund policy</span>
+            <span class = 'bottom_texts'> Privacy policy</span>
+            <span class = 'bottom_texts'> Terms of service</span>
+        </div>
+
+
+
+        <div class="right"></div>
+    </div>
+</body>
+</html>
