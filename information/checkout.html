@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkOutPage</title>
     <style>
+        /* *{
+            padding: 0;
+            margin: 0;
+        } */
         #container{
             display:flex;
             height:fit-content;
@@ -32,7 +36,7 @@
         .contact_div{
             margin-bottom:6vh;
         }
-        .contact_information, 
+        /* .contact_information,  */
         .user_company_name,
         .use_address,
         .use_apartment,
@@ -46,6 +50,18 @@
             border:1px solid #cecece;
             font-family: 'Open Sans', sans-serif;
         }
+        .contact_information{
+            width:87%;
+            padding:2vh;
+            border-radius: 1vh;
+            /* margin-top:2vh; */
+            margin-bottom: 1vh;
+            border:1px solid #cecece;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .user-email>label{
+            color: #767676;
+        }        
         #select_contry{
             width:91%;
             padding:2vh;
@@ -115,7 +131,11 @@
             <div class="contact_div">
                 <lable class="contact_line">Contact information</lable>
                 <br>
-                <input class="contact_information" type="text"></input>
+                <br>
+                <div class="user-email">
+                    <label for="user_email">Email</label><br>
+                    <input class="contact_information" id="user_email" type="text"></input>
+                </div>
                 <br>
                 <input type="checkbox">
                 <lable>Email me with news and offers</lable>
@@ -178,7 +198,7 @@
             </div>
 
             <div class="submit">
-                <button class = 'continue_to_shopping'> continue to shipping</button>
+                <button class = 'continue_to_shopping' onclick="continueToShipping()"> continue to shipping</button>
             </div>
 
             <hr>
@@ -191,5 +211,36 @@
 
         <div class="right"></div>
     </div>
+
+    <script>
+        function continueToShipping() {
+            let email = document.getElementById("user_email").value
+            let userName = document.querySelectorAll(".user_name")
+            let company = document.querySelector(".user_company_name").value
+            let address = document.querySelector(".use_address").value
+            let apartement = document.querySelector(".use_apartment").value
+            let city = document.querySelector(".user_city_name").value
+            let state = document.querySelector("#state_options").value
+            let pincode = document.querySelector(".user_pincode").value
+            let phone = document.querySelector(".user_phone_number").value
+            console.log(email, userName[0].value, city, company, address, apartement, state, pincode, phone);
+            let details = {
+                email: email,
+                fName: userName[0].value,
+                lName: userName[1].value,
+                company: company,
+                address: address,
+                apartement:apartement,
+                city:city,
+                state:state,
+                pincode:pincode,
+                phone:phone
+            }
+            localStorage.setItem("shippingAddress",JSON.stringify(details))
+        }
+    </script>
+
+
+
 </body>
 </html>
