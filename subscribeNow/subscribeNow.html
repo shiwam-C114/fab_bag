@@ -7,7 +7,133 @@
     <!-- <link rel="stylesheet" href="../styles/main.css"> -->
     <!-- <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
     <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
     <style>
+      body {
+    margin: 0px;
+    padding: 0px;
+  }
+  a{
+    text-decoration: none;
+  }
+
+  #navbar {
+    background-color: rgba(255, 255, 255, 255);
+    /* background-color: gray; */
+    height: 80px;
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    /* border: 4px solid gray; */
+    /* border: 1px solid gray; */
+    position: fixed;
+    top: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  #navbar > div {
+    margin-left: 3vh;
+    margin-left: 3vh;
+    /* background-color:gray; */
+    width: 30%;
+  }
+  #navbar > div:first-child{
+    margin-top: 3vh;
+  }
+  .logo>img {
+    width: 60%;
+    height: 90%;
+    margin-left: 27%;
+  }
+  .subscribe h3{
+    color: #eea13d;
+    font-family: "Open Sans", sans-serif;
+  }
+  .search_cart {
+    display: flex;
+    flex-direction: row-reverse;
+    /* background-color: aquamarine; */
+  }
+  .search_cart > div {
+    margin-left: 2vh;
+    margin-right: 2vh;
+    margin-top:3vh;
+    height: 90%;
+    /* border:1px solid black; */
+    padding:1vh;
+    /* background-color: teal; */
+  }
+  #search_pop_up {
+    display: none;
+    height: 260px;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
+    /* transition: height 500ms; */
+    /* border: 1px solid gray; */
+    padding: 4vh;
+    position: fixed;
+    top: 0;
+  }
+  #search_input {
+    margin-left: 2vh;
+    width: 91%;
+    height: 100px;
+    font-size: 5vh;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: "Open Sans", sans-serif;
+    color: black;
+    margin-right: 6vh;
+  }
+  .cancle {
+    height: 30px;
+    /* border: 1px solid salmon; */
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: "Open Sans", sans-serif;
+    margin-right: 7vh;
+    font-size: 6vh;
+    margin-right:19vh;
+    /* font-weight: bold; */
+  }
+  .cancle + p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5vh;
+  }
+  .options {
+    /* border: 1px solid gray; */
+    height: fit-content;
+    width: 190px;
+    position: absolute;
+    z-index: 5;
+    top: 80px;
+    margin-left: 82%;
+    text-align: center;
+    display: none;
+    /* visibility:hidden; */
+    background-color:white;
+    /* display:flex;;
+      flex-direction: row-reverse; */
+  }
+  .options > ul {
+    list-style-type: none;
+    /* display:; */
+  }
+
+  /* navbar end  */
+  .gap{
+   height:20vh;
+ }
+ /* gap after navbar  */
+
+
+/* subsciption css */
+
       * {
         margin: 0;
         padding: 0;
@@ -15,7 +141,7 @@
 
       .main {
         margin: 0 4%;
-        border: 2px saddlebrown solid;
+        /* border: 2px saddlebrown solid; */
         padding: 0 1%;
         display: flex;
         justify-content: center;
@@ -86,7 +212,7 @@
         text-align: center;
         font-size: 15px;
         max-width: 70%;
-        border: 2px solid red;
+        /* border: 2px solid red; */
       }
 
       .plans > div {
@@ -106,6 +232,7 @@
 
   <body>
     <div id="header"></div>
+    <div class="gap"></div>
     <div class="main">
       <div id="product-img-show">
         <img
@@ -207,9 +334,7 @@
     </script>
 
     <!-- script 2  -->
-    <script type="module">
-      import navbar from "../componants/navbar.js";
-      let nav = document.getElementById("header");
+    <script>
       // nav.innerHTML = navbar()
 
       function desciptionChanger() {
@@ -246,3 +371,51 @@
     </script>
   </body>
 </html>
+
+<script type="module">
+    import navbar from '../componants/navbar.js';
+  
+  let header = document.getElementById("header");
+     header.innerHTML = navbar();
+</script>
+
+<script type = 'module'>
+  import navbar from '../componants/navbar.js';
+  
+  let header = document.getElementById("header");
+     header.innerHTML = navbar();
+
+  const search = document.getElementById('search').addEventListener('click',search_pop_come)
+  function search_pop_come() {
+    let search = document.getElementById("search_pop_up");
+    let navbar = document.getElementById("navbar");
+    search.style.display = "block";
+    navbar.style.display = "none";
+  }
+
+  const cancle = document.querySelector('.cancle').addEventListener('click', bring_navbar_again)
+  function bring_navbar_again() {
+    let search = document.getElementById("search_pop_up");
+    let navbar = document.getElementById("navbar");
+    search.style.display = "none";
+    navbar.style.display = "flex";
+  }
+
+  let profile = document.getElementById("profile").addEventListener('mouseover',bring_list)
+  function bring_list() {
+    let options = document.querySelector(".options");
+    options.style.display = "inline-block";
+  }
+
+  document.getElementById("profile").addEventListener('mouseout',go_list)
+  function go_list() {
+    let options = document.querySelector(".options");
+    options.style.display = "none";
+  }
+
+  // let next = document.getElementsByClassName('slides').addEventListener()
+ 
+  
+ 
+
+</script>
