@@ -97,9 +97,9 @@
               <div>Rs. 1000</div>
             </div>
             <div class="update-cart-btn">UPDATE CART</div>
-            <a href="../information/checkout.html">
+            <!-- <a href="../information/checkout.html"> -->
               <div class="check-out-btn">CHECK OUT</div>
-            </a>
+            <!-- </a> -->
           </div>
         </div>
       </div>
@@ -173,8 +173,9 @@
       displayCart()
     }
 
-    let updBtn = document.querySelector(".update-cart-btn")
-    updBtn.addEventListener("click",updateCart)
+    document.querySelector(".update-cart-btn").addEventListener("click",updateCart)
+
+    document.querySelector(".check-out-btn").addEventListener("click",updateCart)
 
     function updateCart() {
       let data = JSON.parse(localStorage.getItem("cart"))
@@ -182,7 +183,9 @@
       table.childNodes.forEach(tableRow => {
         data.forEach(item => {
           if (item.subscription == tableRow.childNodes[0].firstChild.alt) {
-            item.quantity = tableRow.childNodes[2].firstChild.value
+            if (+tableRow.childNodes[2].firstChild.value >= 0) {
+              item.quantity = +tableRow.childNodes[2].firstChild.value
+            }
           }
         });
         // console.log(tableRow.childNodes[0].firstChild.alt,tableRow.childNodes[2].firstChild.value);
