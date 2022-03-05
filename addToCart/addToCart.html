@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Add to cart page</title>
     <style>
       * {
         padding: 0;
@@ -60,6 +60,15 @@
         width: auto;
         border-radius: 4px;
       }
+      a{
+        text-decoration: none;
+      }
+      td{
+        padding: 10px;
+      }
+      h1{
+        font-weight: normal;
+      }
     </style>
   </head>
   <body>
@@ -67,8 +76,7 @@
       <div class="cart-container">
         <div class="cart-title"><h1>My Cart</h1></div>
         <div class="cart-body">
-          <div class="cart-product-info">
-              
+          <div class="cart-product-info">  
             <table>
               <thead>
                 <tr>
@@ -80,30 +88,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Makeup-Reveal_compact.png?v=1646291756"
-                      alt=""
-                    />
-                  </td>
-                  <td>
-                    <p>The Empow-HER March Fab Bag 1 Month</p>
-                  </td>
-                  <td>
-                    <input type="text" />
-                  </td>
-                  <td>
-                    <p>Rs. 1000</p>
-                  </td>
-                  <td>
-                    <img
-                      style="width: 15px"
-                      src="http://cdn.onlinewebfonts.com/svg/img_439489.png"
-                      alt=""
-                    />
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -113,7 +97,9 @@
               <div>Rs. 1000</div>
             </div>
             <div class="update-cart-btn">UPDATE CART</div>
-            <div class="check-out-btn">CHECK OUT</div>
+            <a href="../information/checkout.html">
+              <div class="check-out-btn">CHECK OUT</div>
+            </a>
           </div>
         </div>
       </div>
@@ -121,8 +107,70 @@
   </body>
 
   <script>
-    //   have to take data from te local storage and addto cart page accordingly
-    
+    function displayCart() {
+      let count = 0   // count to check the no of ele with ele.quantity == 0, to show Your cart is empty!!
+      let data = JSON.parse(localStorage.getItem("cart"))
+      console.log(data);
+      let tBody = document.querySelector("tbody")
+      tBody.innerHTML = ""
+      data.forEach(element => {
+        if (element.quantity) {
+          console.log(element);
+          let tr = document.createElement("tr")
+          let td1 = document.createElement("td")
+          let img = document.createElement("img")
+          img.src = element.img
+          td1.appendChild(img)
+          let td2 = document.createElement("td")
+          let p = document.createElement("p")
+          p.textContent = element.title
+          td2.appendChild(p)
+          let td3 = document.createElement("td")
+          let input = document.createElement("input")
+          input.type = "text"
+          input.value = element.quantity
+          td3.appendChild(input)
+          let td4 = document.createElement("td")
+          let amount = document.createElement("p")
+          amount.textContent = `Rs. ${element.price * element.quantity}`
+          td4.appendChild(amount)
+          let td5 = document.createElement("td")
+          td5.innerHTML = `<img
+                      onclick="remove(this.name)"
+                      name=${element.subscription}
+                      style="width: 15px"
+                      src="http://cdn.onlinewebfonts.com/svg/img_439489.png"
+                      alt=""
+                    />`
+
+          tr.append(td1,td2,td3,td4,td5)
+          tBody.appendChild(tr)
+
+        }
+        else{
+          count++
+        }
+      });
+      if (count === data.length) {
+        let msg = document.createElement("h1")
+        msg.textContent = "your cart is empty!!"
+        document.querySelector(".cart-body").innerHTML = msg.outerHTML
+      }
+    }
+    displayCart();
+
+    function remove(id) {
+      console.log(id);
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      cart.forEach(ele => {
+        if (ele.subscription === id) {
+          ele.quantity = 0;
+        }
+      });
+      localStorage.setItem("cart", JSON.stringify(cart))
+      displayCart()
+    }
+
   </script>
 
 </html>

@@ -12,6 +12,7 @@
         margin: 0;
         padding: 0;
       }
+
       .main {
         margin: 0 4%;
         border: 2px saddlebrown solid;
@@ -23,6 +24,7 @@
       .main > div {
         padding: 1%;
       }
+
       #product-img-show {
         flex: 2;
       }
@@ -30,60 +32,84 @@
       #product-img {
         max-width: 100%;
       }
+
       #product-info {
         flex: 3;
       }
+
       #product-info > div {
         margin-bottom: 1%;
       }
+
       .plans {
         display: flex;
         gap: 20px;
         padding: 10px 0;
       }
+
       .add-to-cart {
-        background-color: black;
+        background-color: #252525;
         color: white;
         text-align: center;
         padding: 2% 0;
         margin: 2% 0;
       }
+
       .quantity-btn {
         border: 0.5px black solid;
         margin: 1% 75% 1% 0%;
         padding: 2% 1%;
       }
+
       .quantity-btn > input {
         border: 0;
       }
+
+      .quantity-btn > span {
+        padding: 1%;
+        font-size: 25px;
+      }
+
       .description-view-return {
         text-align: center;
         margin: 4%;
       }
+
       .description-view-return > span {
         margin: 1%;
         padding: 1%;
         border: 2px orange solid;
         border-radius: 50px;
       }
+
       #quantity-input-box {
+        text-align: center;
+        font-size: 15px;
         max-width: 70%;
         border: 2px solid red;
       }
-      .plans>div{
-          background-color: #e1e1e1;
-          padding: 10px 5px;
+
+      .plans > div {
+        background-color: #e1e1e1;
+        padding: 10px 5px;
       }
-      .price-display{
-          display: flex;
+
+      .price-display {
+        display: flex;
+      }
+
+      a {
+        text-decoration: none;
       }
     </style>
   </head>
+
   <body>
     <div id="header"></div>
     <div class="main">
       <div id="product-img-show">
-        <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Makeup-Reveal.png?v=1646291756"
+        <img
+          src="https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Makeup-Reveal.png?v=1646291756"
           alt=""
           id="product-img"
         />
@@ -97,21 +123,21 @@
         </div>
         <div></div>
         <div class="price-display">
-            <!-- &nbsp for space -->
-            <h2>Rs. &nbsp;</h2>        
+          <!-- &nbsp for space -->
+          <h2>Rs. &nbsp;</h2>
           <h2 id="product-price">599</h2>
-          <h2>.00</h2> 
+          <h2>.00</h2>
         </div>
         <div>
           <p>plans</p>
           <div class="plans">
             <div onclick="chagePrice(this)">1 MONTH</div>
-            <div onclick="chagePrice(this)">3 MONTHS</div>
+            <div onclick="chagePrice(this)" style="color: #9d9d9d;" >3 MONTHS</div>
           </div>
           <div class="quantity-btn">
-            <span>-</span>
-            <input type="text" id="quantity-input-box" />
-            <span>+</span>
+            <span onclick="changeQuantity(this.textContent)">-</span>
+            <input type="text" id="quantity-input-box" value="1" />
+            <span onclick="changeQuantity(this.textContent)">+</span>
           </div>
           <a href="../addToCart/addToCart.html">
             <div class="add-to-cart" onclick="updateCart()">ADD TO CART</div>
@@ -138,38 +164,50 @@
     </div>
 
     <script>
-            // <------------------ update cart function below ----------------> //
-
-    function updateCart(){ // have to change the structue to take more items
-        console.log("this is update cart");
-        let quantity = document.getElementById("quantity-input-box").value
-        let price =  document.getElementById("product-price").innerText
-        let obj = {
-            price: price,
-            quantity: quantity
+      // <------------------ update cart function below ----------------> //
+      let planId = 1;
+      function updateCart() {
+        var cart = JSON.parse(localStorage.getItem("cart"));
+        cart.forEach((ele) => {
+          if (ele.subscription == planId) {
+            if (document.getElementById("quantity-input-box").value>=1) {
+              ele.quantity += parseInt(document.getElementById("quantity-input-box").value)  
+            }
+            
+          }
+        });
+        console.log(cart[0].quantity,cart[1].quantity );
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+      function changeQuantity(sign) {
+        if (sign === "+") {
+          document.getElementById("quantity-input-box").value++;
+        } else {
+          if (document.getElementById("quantity-input-box").value > 1) {
+            document.getElementById("quantity-input-box").value--;
+          }
         }
-        localStorage.setItem("cart", JSON.stringify(obj))
-        
-    }
+      }
 
-    //  <------------------------- changePrice ------------------------------>
-    function chagePrice(ths){
-        // console.log("change clicked");
-        var currentPrice =  document.getElementById("product-price")
-        // console.log(currentPrice);
-        if (ths.innerHTML === "1 MONTH") {
-            console.log("1 MONTH");
-            currentPrice.textContent = "599"
-        }else if (ths.innerHTML === "3 MONTHS") {
-            console.log("3");
-            currentPrice.textContent = "1,599"
+      function chagePrice(plan) {
+        var currentPrice = document.getElementById("product-price");
+        if (plan.innerHTML === "1 MONTH") {
+          planId = 1;
+          console.log(1);
+          plan.parentElement.children[1].style.color = "#9d9d9d"
+          plan.parentElement.children[0].style.color = "black"
+          currentPrice.textContent = "599";
+        } else if (plan.innerHTML === "3 MONTHS") {
+          planId = 3;
+          plan.parentElement.children[1].style.color = "black"
+          plan.parentElement.children[0].style.color = "#9d9d9d"
+          currentPrice.textContent = "1,599";
         }
-    }
+      }
     </script>
 
-<!-- script 2  -->
+    <!-- script 2  -->
     <script type="module">
-
       import navbar from "../componants/navbar.js";
       let nav = document.getElementById("header");
       // nav.innerHTML = navbar()
@@ -205,7 +243,6 @@
         changeData();
       }
       desciptionChanger();
-
     </script>
   </body>
 </html>

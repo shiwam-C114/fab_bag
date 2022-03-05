@@ -14,6 +14,13 @@
         margin: 0px;
         padding: 0px;
       }
+      a{
+        text-decoration: none;
+      }
+      u{ padding: 10px;
+        text-decoration: #f8edd7;
+        border-bottom: #ebca87 2px solid;
+      }
       #navbar {
         background-color: rgba(255, 255, 255, 255);
         height: 80px;
@@ -181,6 +188,7 @@
     .plans{
       display:flex;
       padding-left:10vh;
+      justify-content: center;
     }
     .plans>div{
       width:300px;
@@ -348,7 +356,7 @@
       <!-- subscription plans -->
 
 
-      <div class = 'heading'> <h1>SUBSCRIPTION</h1></div>
+      <div class = 'heading'> <h1> <u>SUBSCRIPTION</u> </h1></div>
 
       <div class = 'plans'>
         <div class="box_of_plans">
@@ -356,15 +364,16 @@
           <div> <b>RS. 599.00</b> <br> /per month </div>
           <div> ONE TIME PAYMENT  <br> RS. 599.00</div> 
           <div>
-            <button>ADD TO CART</button>
+           <a href="../addToCart/addToCart.html"><button onclick="addToCart(599)">ADD TO CART</button></a> 
           </div>
         </div>
         <div class="box_of_plans">
-          <div><b> 1 MONTH </b><br>SUBSCRIPTION</div>
+          <div><b> 3 MONTHS </b><br>SUBSCRIPTION</div>
           <div> <b>RS. 599.00</b> <br> /per month </div>
-          <div> ONE TIME PAYMENT  <br> RS. 599.00</div> 
+          <div> ONE TIME PAYMENT  <br> RS. 1,599.00</div> 
           <div>
-            <button>ADD TO CART</button>
+            <a href="../addToCart/addToCart.html"><button onclick="addToCart(1599)">ADD TO CART</button></a>
+            
           </div>
         </div>
       </div>
@@ -462,6 +471,48 @@
     </div>
     
   </div>
+
+  <script>
+    function addToCart(amount) {
+      if (localStorage.getItem("cart")) {
+        let local = JSON.parse(localStorage.getItem("cart"))
+        console.log(local[0].quantity ,amount == 599);
+          if (amount == 599) {
+            local[0].quantity++
+          }else{
+            local[1].quantity++
+          }
+          console.log(local);
+          localStorage.setItem("cart",JSON.stringify(local))
+      } else{
+        let arr =  [];
+        let obj1 = {
+          subscription: "1",
+          quantity: 0,
+          price: 599,
+          img: "https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Makeup-Reveal_compact.png",
+          title: "The Empow-HER March Fab Bag 1 Month"
+        }
+        let obj2 = {
+          subscription: "3",
+          quantity: 0,
+          price: 1599,
+          img: "https://cdn.shopify.com/s/files/1/0052/7551/6995/products/Women_sPage-Makeup-Reveal_compact.png",
+          title: "The Empow-HER March Fab Bag 3 Months"
+        }
+          if (amount === 599) {
+            obj1.quantity++
+          }else{
+            obj2.quantity++
+          }
+        arr.push(obj1)
+        arr.push(obj2)
+        localStorage.setItem("cart",JSON.stringify(arr))
+      }
+    }
+  </script>
+
+
   </body>
 </html>
 
