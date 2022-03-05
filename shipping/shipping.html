@@ -81,15 +81,15 @@
                 <p>Cart  &nbsp >  &nbsp Information  &nbsp >  &nbsp Shipping  &nbsp >  &nbsp Payment</p>
             </div>
             <div class="contact-shipment-container">
-                <div class="contact">Contact  email@email.com</div>
+                <div id="contact-info">Contact &nbsp</div>
                 <hr>
-                <div class="ship-to">Ship to  address sefsvs</div>
+                <div id="ship-to-address">Ship to &nbsp</div>
             </div>
             <div class="shipping-method">
                 <h3>Shipping method</h3>
-                <div class="contact">Free standard shipping ()</div>
+                <div id="free-standard">Free standard shipping (Debit Card / Credit Card / Net Banking / PayTM)</div>
                 <hr>
-                <div class="ship-to">cash on delivery ( Rs. 100/- Convenience Charge)</div>
+                <div id="COD">cash on delivery ( Rs. 100/- Convenience Charge)</div>
             </div>
             <div class="continue-to-payment">
                 <p> < Return to information</p>
@@ -104,5 +104,20 @@
             <div class="price-info"></div>
         </div>
     </div>
+
+    <script>
+        let data = JSON.parse(localStorage.getItem("shippingAddress"))
+        console.log(data);
+        let contact_detail = data.email
+        let shipping_address = `${data.address}, ${data.apartement}, ${data.pincode}, ${data.city}, ${data.state}, India`
+        let C= document.createElement("p")
+        let S= document.createElement("p")
+        C.textContent = contact_detail
+        S.textContent = shipping_address
+        document.getElementById("contact-info").append(C)
+        document.getElementById("ship-to-address").appendChild(S)
+
+
+    </script>
 </body>
 </html>

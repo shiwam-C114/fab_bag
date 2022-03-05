@@ -12,7 +12,9 @@
         } */
         #container{
             display:flex;
-            height:fit-content;
+            /* height:fit-content; */
+            padding: 4%;
+            margin: 1%;
         }
         #container>div{
             width:50%;
@@ -123,11 +125,30 @@
             margin-left:3vh;
             font-family: 'Open Sans', sans-serif;
         }
+        .logo{
+            text-align: center;
+            height: 70px;
+            margin: 0 0 5% 0;
+        }
+        .logo img{
+            max-width: 100%;
+            max-height: 70%;
+        }
+        .logo p {
+            margin: 10px 0 0 0;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div class="left">
+            <div class="logo">
+                <a href="../home/index.html">
+                    <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO-FINAL.png?10214" alt="">
+                </a>
+                <!-- "&nbsp" is for space -->
+                <p>Cart  &nbsp >  &nbsp Information  &nbsp >  &nbsp Shipping  &nbsp >  &nbsp Payment</p>
+            </div>
             <div class="contact_div">
                 <lable class="contact_line">Contact information</lable>
                 <br>
@@ -209,10 +230,48 @@
 
 
 
-        <div class="right"></div>
+        <div class="right">
+            <div class="cart-info"></div>
+            <div class="discount-code">discount code</div>
+            <div class="charge-detail">
+                <div class="subtotal"><p>subtotal</p></div>
+                <div class="shipping"><p>Shipping</p></divZ>
+            </div>
+            <div class="total"><p>Total</p></div>
+        </div>
     </div>
 
     <script>
+
+        function cartViewCard() {
+            const cart = JSON.parse(localStorage.getItem("cart"))
+            console.log(cart);
+            let container = document.querySelector(".right")
+            cart.forEach(item => {
+                if (item.quantity) {
+                    let D = document.createElement('div')
+                    let img = document.createElement('img')
+                    img.src = item.img;
+                    console.log(item.img);
+                    let title = document.createElement("h5")
+                    title.textContent = item.title;
+                    let subscription = document.createElement("p")
+                    subscription.innerText = item.subscription
+                    let amount = document.createElement("h3")
+                    amount.textContent = item.quantity * item.price
+                    D.append(img, title,subscription,amount)
+                    container.appendChild(D)
+                }
+            }); 
+            // have to push the data to update the ui and change some css
+            let subtotal = document.querySelector("subtotal")
+            // let p1 = 
+            // subtotal
+
+        }
+
+        cartViewCard()
+
         function continueToShipping() {
             let email = document.getElementById("user_email").value
             let userName = document.querySelectorAll(".user_name")
@@ -237,6 +296,7 @@
                 phone:phone
             }
             localStorage.setItem("shippingAddress",JSON.stringify(details))
+            location.href = "../shipping/shipping.html"
         }
     </script>
 
