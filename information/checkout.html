@@ -18,7 +18,7 @@
         }
         #container>div{
             width:50%;
-            border:1px solid black;
+            /* border:1px solid black; */
         }
 
         /* left  side */
@@ -137,6 +137,48 @@
         .logo p {
             margin: 10px 0 0 0;
         }
+        
+        .right>div{
+            /* border: 1px solid gray; */
+        }
+        .cart-info{
+            /* background-color:gray; */
+            /* width:80px; */
+        }
+        .box{
+            display : flex;
+            padding:4px;
+        }
+
+        .box img{
+            width:77px;
+            margin:3px;
+        }
+
+        /* discount  */
+
+        .discount_code{
+            display:flex;
+            justify-content:center;
+        }
+        .discount_code>input{
+            padding:2vh;
+            margin:2vh;
+            width:30vh;
+            border: 1px solid #cecece;
+            border-radius: 1vh;
+        }
+        .discount_code>button{
+            padding:2vh;
+            margin:2vh;
+            color:white;
+            background-color:#cecece;
+            border: 1px solid #cecece;
+            border-radius: 1vh;
+            font-weight:bold;
+            width:12vh;
+        }
+
     </style>
 </head>
 <body>
@@ -232,7 +274,10 @@
 
         <div class="right">
             <div class="cart-info"></div>
-            <div class="discount-code">discount code</div>
+            <div class="discount_code">
+                <input type="text" placeholder="Discount Code">
+                <button>Apply</button>
+            </div>
             <div class="charge-detail">
                 <div class="subtotal"><p>subtotal</p></div>
                 <div class="shipping"><p>Shipping</p></divZ>
@@ -246,20 +291,35 @@
         function cartViewCard() {
             const cart = JSON.parse(localStorage.getItem("cart"))
             console.log(cart);
-            let container = document.querySelector(".right")
+            let container = document.querySelector(".cart-info");
             cart.forEach(item => {
                 if (item.quantity) {
-                    let D = document.createElement('div')
-                    let img = document.createElement('img')
+                    let D = document.createElement('div');
+                    // D.style.border = '1px solid black';
+                    D.className = 'box';
+
+                   let img_box = document.createElement('div');
+                    let img = document.createElement('img');
                     img.src = item.img;
-                    console.log(item.img);
-                    let title = document.createElement("h5")
+                    img_box.append(img);
+                    
+                    
+
+                    let details = document.createElement('div');
+                    let title = document.createElement("p");
                     title.textContent = item.title;
-                    let subscription = document.createElement("p")
-                    subscription.innerText = item.subscription
+
+                    console.log(item.title);
+                    let subscription = document.createElement("h4")
+                    subscription.innerText = item.subscription;
+                    subscription.style.color ='red';
+                    // subscription.style.marginLeft = '-50px';
+
                     let amount = document.createElement("h3")
-                    amount.textContent = item.quantity * item.price
-                    D.append(img, title,subscription,amount)
+                    amount.innerHTML = `${  item.quantity * item.price}`;
+                    amount.style.marginLeft = '10vh';
+
+                    D.append(img_box,title,amount);
                     container.appendChild(D)
                 }
             }); 
