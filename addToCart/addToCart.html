@@ -120,6 +120,7 @@
           let td1 = document.createElement("td")
           let img = document.createElement("img")
           img.src = element.img
+          img.alt = element.subscription
           td1.appendChild(img)
           let td2 = document.createElement("td")
           let p = document.createElement("p")
@@ -127,6 +128,7 @@
           td2.appendChild(p)
           let td3 = document.createElement("td")
           let input = document.createElement("input")
+          input.style.textAlign = "center"
           input.type = "text"
           input.value = element.quantity
           td3.appendChild(input)
@@ -136,12 +138,12 @@
           td4.appendChild(amount)
           let td5 = document.createElement("td")
           td5.innerHTML = `<img
-                      onclick="remove(this.name)"
+                      onclick="remove(this.name)"  
                       name=${element.subscription}
                       style="width: 15px"
                       src="http://cdn.onlinewebfonts.com/svg/img_439489.png"
                       alt=""
-                    />`
+                    />` //used a imaginary aux attribute name in img above to pass the subscription detaial to 
 
           tr.append(td1,td2,td3,td4,td5)
           tBody.appendChild(tr)
@@ -169,6 +171,29 @@
       });
       localStorage.setItem("cart", JSON.stringify(cart))
       displayCart()
+    }
+
+    document.querySelector(".update-cart-btn").addEventListener("click",updateCart)
+
+    document.querySelector(".check-out-btn").addEventListener("click",updateCart)
+
+    function updateCart() {
+      let data = JSON.parse(localStorage.getItem("cart"))
+      let table = document.querySelector("tbody")
+      table.childNodes.forEach(tableRow => {
+        data.forEach(item => {
+          if (item.subscription == tableRow.childNodes[0].firstChild.alt) {
+            if (+tableRow.childNodes[2].firstChild.value >= 0) {
+              item.quantity = +tableRow.childNodes[2].firstChild.value
+            }
+          }
+        });
+        // console.log(tableRow.childNodes[0].firstChild.alt,tableRow.childNodes[2].firstChild.value);
+      });
+      console.log(data,"updatedCart after cliking updatecart");
+      localStorage.setItem("cart", JSON.stringify(data))
+      displayCart()
+      // console.log(table.childNodes[0].childNodes[0].firstChild);
     }
 
   </script>

@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkOutPage</title>
     <style>
+        /* *{
+            padding: 0;
+            margin: 0;
+        } */
         #container{
             display:flex;
-            height:fit-content;
+            /* height:fit-content; */
+            padding: 4%;
+            margin: 1%;
         }
         #container>div{
             width:50%;
@@ -32,7 +38,7 @@
         .contact_div{
             margin-bottom:6vh;
         }
-        .contact_information, 
+        /* .contact_information,  */
         .user_company_name,
         .use_address,
         .use_apartment,
@@ -46,6 +52,18 @@
             border:1px solid #cecece;
             font-family: 'Open Sans', sans-serif;
         }
+        .contact_information{
+            width:87%;
+            padding:2vh;
+            border-radius: 1vh;
+            /* margin-top:2vh; */
+            margin-bottom: 1vh;
+            border:1px solid #cecece;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .user-email>label{
+            color: #767676;
+        }        
         #select_contry{
             width:91%;
             padding:2vh;
@@ -107,15 +125,38 @@
             margin-left:3vh;
             font-family: 'Open Sans', sans-serif;
         }
+        .logo{
+            text-align: center;
+            height: 70px;
+            margin: 0 0 5% 0;
+        }
+        .logo img{
+            max-width: 100%;
+            max-height: 70%;
+        }
+        .logo p {
+            margin: 10px 0 0 0;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div class="left">
+            <div class="logo">
+                <a href="../home/index.html">
+                    <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO-FINAL.png?10214" alt="">
+                </a>
+                <!-- "&nbsp" is for space -->
+                <p>Cart  &nbsp >  &nbsp Information  &nbsp >  &nbsp Shipping  &nbsp >  &nbsp Payment</p>
+            </div>
             <div class="contact_div">
                 <lable class="contact_line">Contact information</lable>
                 <br>
-                <input class="contact_information" type="text"></input>
+                <br>
+                <div class="user-email">
+                    <label for="user_email">Email</label><br>
+                    <input class="contact_information" id="user_email" type="text"></input>
+                </div>
                 <br>
                 <input type="checkbox">
                 <lable>Email me with news and offers</lable>
@@ -178,7 +219,7 @@
             </div>
 
             <div class="submit">
-                <button class = 'continue_to_shopping'> continue to shipping</button>
+                <button class = 'continue_to_shopping' onclick="continueToShipping()"> continue to shipping</button>
             </div>
 
             <hr>
@@ -189,7 +230,77 @@
 
 
 
-        <div class="right"></div>
+        <div class="right">
+            <div class="cart-info"></div>
+            <div class="discount-code">discount code</div>
+            <div class="charge-detail">
+                <div class="subtotal"><p>subtotal</p></div>
+                <div class="shipping"><p>Shipping</p></divZ>
+            </div>
+            <div class="total"><p>Total</p></div>
+        </div>
     </div>
+
+    <script>
+
+        function cartViewCard() {
+            const cart = JSON.parse(localStorage.getItem("cart"))
+            console.log(cart);
+            let container = document.querySelector(".right")
+            cart.forEach(item => {
+                if (item.quantity) {
+                    let D = document.createElement('div')
+                    let img = document.createElement('img')
+                    img.src = item.img;
+                    console.log(item.img);
+                    let title = document.createElement("h5")
+                    title.textContent = item.title;
+                    let subscription = document.createElement("p")
+                    subscription.innerText = item.subscription
+                    let amount = document.createElement("h3")
+                    amount.textContent = item.quantity * item.price
+                    D.append(img, title,subscription,amount)
+                    container.appendChild(D)
+                }
+            }); 
+            // have to push the data to update the ui and change some css
+            let subtotal = document.querySelector("subtotal")
+            // let p1 = 
+            // subtotal
+
+        }
+
+        cartViewCard()
+
+        function continueToShipping() {
+            let email = document.getElementById("user_email").value
+            let userName = document.querySelectorAll(".user_name")
+            let company = document.querySelector(".user_company_name").value
+            let address = document.querySelector(".use_address").value
+            let apartement = document.querySelector(".use_apartment").value
+            let city = document.querySelector(".user_city_name").value
+            let state = document.querySelector("#state_options").value
+            let pincode = document.querySelector(".user_pincode").value
+            let phone = document.querySelector(".user_phone_number").value
+            console.log(email, userName[0].value, city, company, address, apartement, state, pincode, phone);
+            let details = {
+                email: email,
+                fName: userName[0].value,
+                lName: userName[1].value,
+                company: company,
+                address: address,
+                apartement:apartement,
+                city:city,
+                state:state,
+                pincode:pincode,
+                phone:phone
+            }
+            localStorage.setItem("shippingAddress",JSON.stringify(details))
+            location.href = "../shipping/shipping.html"
+        }
+    </script>
+
+
+
 </body>
 </html>
