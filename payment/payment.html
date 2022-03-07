@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/5594c2eb28.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            /* height: 800px; */
+            /* background-color: pink; */
+        }
+
+        .mode {
+            display: flex;
+            flex-direction: column;
+            flex: 4;
+            /* height: 800px; */
+            /* background-color: yellow; */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mode>div {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            height: fit-content;
+            margin-top: 50px;
+            background-color: #fff;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin: 5px 5px 5px 0px;
+        }
+
+        h2+p{
+            margin-bottom: 10px;
+        }
+
+        .option {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            border: 1px solid rgb(134, 134, 134);
+            border-radius: 5px;
+            /* justify-content: center; */
+            align-items: center;
+        }
+
+        .option>div {
+            margin-left: 25px;
+            width: 25px;    
+            height: 25px;
+            background-color: white;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+
+        .option>div>div {
+            margin: 8px auto;
+            background-color: white;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        div+p {
+            margin-left: 10px;
+        }
+
+        p+img {
+            margin-left: 10px;
+            width: 200px;
+            height: 40px;
+        }
+
+        div+img {
+            margin-left: 10px;
+            width: 150px;
+            height: 40px;
+        }
+
+        .hide {
+            display: none;
+            /* flex-direction: column; */
+            width: 100%;
+            height: 250px;
+            border: 1px solid black;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hide{
+            animation: growDown 300ms ease-in-out forwards
+        }
+
+        .hide>p {
+            width: 400px;
+            margin: 5px auto;
+        }
+
+        .hide>i {
+            font-size: 100px;
+            margin: 50px auto 0px;
+        }
+
+        .total {
+            flex: 2;
+            height: 800px;
+            background-color: rgb(153, 152, 152);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="mode">
+            <div>
+                <h2>Payment</h2>
+                <p>All Trancsaction are secured and encrypted.</p>
+                <div class="option" id="card">
+                    <div id='cardclick' onclick="funcard()">
+                        <div></div>
+                    </div>
+                    <p>Credit Card / Debit Card / Net Banking / UPI</p>
+                    <img src="https://www.letterprinting.net/store/pc/catalog/credit-card-icons.png" alt="">
+                </div>
+                <div class='hide' id='hidecard'>
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <p>After clicking "Complete order", you will be redirected to credit card / Debit card / Net banking
+                        / UPI to complete your purchase securely.</p>
+                </div>
+                <div class="option" id="paytm">
+                    <div id='paytmclick' onclick="funpaytm()">
+                        <div></div>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Paytm_logo.png?20170729032638" alt="">
+                </div>
+                <div class='hide' id='hidepaytm'>
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <p>After clicking "Complete order", you will be redirected to credit card / Debit card / Net banking
+                        / UPI to complete your purchase securely.</p>
+                </div>
+                <div class="option" id="cod">
+                    <div id='codclick' onclick="funcod()">
+                        <div></div>
+                    </div>
+                    <p>Cash On Delivery</p>
+                </div>
+                <div class='hide' id='hidecod'>
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <p>After clicking "Complete order", you will be redirected to credit card / Debit card / Net banking
+                        / UPI to complete your purchase securely.</p>
+                </div>
+            </div>
+            <div>
+                <h2>Billing address</h2>
+                <p>Select the address that matches your card or payment method.</p>
+            </div>
+
+        </div>
+        <div class="total"></div>
+    </div>
+
+    <script>
+        var card = document.getElementById('hidecard')
+        var paytm = document.getElementById('hidepaytm')
+        var cod = document.getElementById('hidecod')
+        var cardclick = document.getElementById('cardclick')
+        var paytmclick = document.getElementById('paytmclick')
+        var codclick = document.getElementById('codclick')
+
+        function funcard() {    
+            if (card.style.display === "none") {
+                card.style.display = "block";
+                paytm.style.display = "none";
+                cod.style.display = "none";
+                cardclick.style.backgroundColor = 'black'
+                paytmclick.style.backgroundColor = 'white'
+                codclick.style.backgroundColor = 'white'
+            } else {
+                card.style.display = "none";
+                cardclick.style.backgroundColor = 'white'
+            }
+        }
+
+        function funpaytm() {    
+            if (paytm.style.display === "none") {
+                card.style.display = "none";
+                paytm.style.display = "block";
+                cod.style.display = "none";
+                cardclick.style.backgroundColor = 'white'
+                paytmclick.style.backgroundColor = 'black'
+                codclick.style.backgroundColor = 'white'
+            } else {
+                paytm.style.display = "none";
+                paytmclick.style.backgroundColor = 'white'
+            }
+        }
+
+        function funcod() {    
+            if (cod.style.display === "none") {
+                card.style.display = "none";
+                paytm.style.display = "none";
+                cod.style.display = "block";
+                cardclick.style.backgroundColor = 'white'
+                paytmclick.style.backgroundColor = 'white'
+                codclick.style.backgroundColor = 'black'
+            } else {
+                cod.style.display = "none";
+                codclick.style.backgroundColor = 'white'
+            }
+        }
+    </script>
+</body>
+
+</html>
