@@ -13,8 +13,8 @@
         #container{
             display:flex;
             /* height:fit-content; */
-            padding: 4%;
-            margin: 1%;
+            padding: 3%;
+            
         }
         #container>div{
             width:50%;
@@ -45,19 +45,19 @@
         .user_phone_number{
 
             width:87%;
-            padding:2vh;
-            border-radius: 1vh;
+            padding:2%;
+            border-radius: 5%;
             margin-top:2vh;
-            margin-bottom: 1vh;
+            margin-bottom: 5px;
             border:1px solid #cecece;
             font-family: 'Open Sans', sans-serif;
         }
         .contact_information{
             width:87%;
-            padding:2vh;
-            border-radius: 1vh;
+            padding:2%;
+            border-radius: 5%;
             /* margin-top:2vh; */
-            margin-bottom: 1vh;
+            margin-bottom: 5px;
             border:1px solid #cecece;
             font-family: 'Open Sans', sans-serif;
         }
@@ -111,6 +111,7 @@
             font-size:2vh;
         }
 
+
         /* horizontal line  */
 
         hr{
@@ -125,26 +126,20 @@
             margin-left:3vh;
             font-family: 'Open Sans', sans-serif;
         }
+        
         .logo{
             text-align: center;
             height: 70px;
-            margin: 0 0 5% 0;
+            margin: 5% 0 5% 0;
         }
         .logo img{
             max-width: 100%;
-            max-height: 70%;
+            max-height: 100%;
         }
         .logo p {
             margin: 10px 0 0 0;
         }
         
-        .right>div{
-            /* border: 1px solid gray; */
-        }
-        .cart-info{
-            /* background-color:gray; */
-            /* width:80px; */
-        }
         .box{
             display : flex;
             padding:4px;
@@ -178,6 +173,26 @@
             font-weight:bold;
             width:12vh;
         }
+        .right{
+            margin:0 6%;
+            padding:5% 2%;
+            background-color: #f7f7f7;
+            
+        }
+        .charge-detail{
+            display: block;
+            justify-content: center;
+            /* width: 80%; */
+        }
+        .charge-detail>div{
+            margin: 0 5%;
+            display: flex;
+            justify-content: space-between;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
 
     </style>
 </head>
@@ -189,10 +204,10 @@
                     <img src="https://cdn.shopify.com/s/files/1/0052/7551/6995/files/FABBAG-LOGO-FINAL.png?10214" alt="">
                 </a>
                 <!-- "&nbsp" is for space -->
-                <p>Cart  &nbsp >  &nbsp Information  &nbsp >  &nbsp Shipping  &nbsp >  &nbsp Payment</p>
+                <p> <a href="../addToCart/addToCart.html"> Cart  &nbsp </a> >  &nbsp <a href="../information/checkout.html"> Information  &nbsp</a> >  &nbsp <a href="../shipping/shipping.html">Shipping  &nbsp</a> > <a href="../payment/payment.html"> Payment</a> &nbsp </p>
             </div>
             <div class="contact_div">
-                <lable class="contact_line">Contact information</lable>
+                <lable class="contact_line"></lable>
                 <br>
                 <br>
                 <div class="user-email">
@@ -273,29 +288,30 @@
 
 
         <div class="right">
-            <div class="cart-info"></div>
-            <div class="discount_code">
-                <input type="text" placeholder="Discount Code">
-                <button>Apply</button>
-            </div>
-            <div class="charge-detail">
-                <div class="subtotal"><p>subtotal</p></div>
-                <div class="shipping"><p>Shipping</p></divZ>
-            </div>
-            <div class="total"><p>Total</p></div>
+            <div>
+                <div class="cart-info"></div>
+                <div class="discount_code">
+                    <input type="text" placeholder="Discount Code">
+                    <button>Apply</button>
+                </div>
+                <div class="charge-detail">
+                    <div class="sub-total"><p>Subtotal</p></div>
+                    <div class="shipping"><p>Shipping</p><p style="color: #818181;">Calculated at next step </p></div>
+                    <div class="total"><p>Total</p></div>
+                </div>
+            </div>  
         </div>
-    </div>
 
     <script>
 
         function cartViewCard() {
+            let subTotalAmount = 0
             const cart = JSON.parse(localStorage.getItem("cart"))
             console.log(cart);
             let container = document.querySelector(".cart-info");
             cart.forEach(item => {
                 if (item.quantity) {
                     let D = document.createElement('div');
-                    // D.style.border = '1px solid black';
                     D.className = 'box';
 
                    let img_box = document.createElement('div');
@@ -303,8 +319,6 @@
                     img.src = item.img;
                     img_box.append(img);
                     
-                    
-
                     let details = document.createElement('div');
                     let title = document.createElement("p");
                     title.textContent = item.title;
@@ -313,10 +327,10 @@
                     let subscription = document.createElement("h4")
                     subscription.innerText = item.subscription;
                     subscription.style.color ='red';
-                    // subscription.style.marginLeft = '-50px';
 
                     let amount = document.createElement("h3")
-                    amount.innerHTML = `${  item.quantity * item.price}`;
+                    amount.innerHTML = `₹${  item.quantity * item.price}`;
+                    subTotalAmount += (item.quantity * item.price)
                     amount.style.marginLeft = '10vh';
 
                     D.append(img_box,title,amount);
@@ -324,10 +338,14 @@
                 }
             }); 
             // have to push the data to update the ui and change some css
-            let subtotal = document.querySelector("subtotal")
-            // let p1 = 
-            // subtotal
-
+            let sub_total = document.querySelector(".sub-total")
+            let p1 = document.createElement("p")
+            p1.textContent = "₹" +subTotalAmount;
+            sub_total.append(p1)
+            let total = document.querySelector(".total")
+            let p2 = document.createElement("p")
+            p2.textContent = "₹" +subTotalAmount;
+            total.append(p2)
         }
 
         cartViewCard()

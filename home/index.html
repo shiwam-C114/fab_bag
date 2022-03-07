@@ -10,9 +10,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/5594c2eb28.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="wraper">
+
     <div id="header"></div>
     <div class="gap"></div>
 
@@ -93,17 +94,17 @@
 
       <div class = 'plans'>
         <div class="box_of_plans">
-          <div><b> 1 MONTH </b><br>SUBSCRIPTION</div>
-          <div> <b>RS. 599.00</b> <br> /per month </div>
-          <div> ONE TIME PAYMENT  <br> RS. 599.00</div> 
+          <div><h2 style="font-weight: 500; margin-bottom: 0;"> 1 MONTH </h2>SUBSCRIPTION</div>
+          <div> <h2 style="font-weight: 500; margin-bottom: 0;">RS. 599.00</h2>  /per month </div>
+          <div ><p style="color: #e5b95f; margin-bottom: 0;">ONE TIME PAYMENT</p><h2 style="font-weight: 500">RS. 599.00</h2> </div> 
           <div>
            <a href="../addToCart/addToCart.html"><button onclick="addToCart(599)">ADD TO CART</button></a> 
           </div>
         </div>
         <div class="box_of_plans">
-          <div><b> 3 MONTHS </b><br>SUBSCRIPTION</div>
-          <div> <b>RS. 599.00</b> <br> /per month </div>
-          <div> ONE TIME PAYMENT  <br> RS. 1,599.00</div> 
+          <div><h2 style="font-weight: 500; margin-bottom: 0;"> 3 MONTHS </h2>SUBSCRIPTION</div>
+          <div> <h2 style="font-weight: 500; margin-bottom: 0;">RS. 533.00</h2>  /per month </div>
+          <div ><p style="color: #e5b95f; margin-bottom: 0;">ONE TIME PAYMENT (11% OFF)</p><h2 style="font-weight: 500">RS. 1,599.00 <s>Rs. 1,797</s> </h2></div> 
           <div>
             <a href="../addToCart/addToCart.html"><button onclick="addToCart(1599)">ADD TO CART</button></a>
             
@@ -226,6 +227,47 @@
             </div>
 
       </div>
+    </div>
+    <div>
+      <div class="footer">
+        <div id="bigbox">
+            <div class="box" id='box1'>
+                <h3>INFORMATION</h3>
+                <p>About us</p>
+                <p>Associated Brands</p>
+                <p>FAQ</p>
+                <p>Collabrated with Fabbag</p>
+                <p>Contact us</p>
+                <p>Returns & Refunds</p>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+            </div>
+            <div class="box" id='box2'>
+                <h3>CUSTOMER CARE</h3>
+                <p>Call : 022-6805-6010 <br>(Monday to Friday : 9 AM - 7 PM).</p>
+                <p>Mail : crew@fabbag.com</p>
+            </div>
+            <div class="box" id='box3'>
+                <h3>NEWSLETTER</h3>
+                <p>Signup for the latest offers, Updates and news</p>
+                <input type="email" placeholder="Your email address" id='txtbox'>
+                <button id='button'>SUBSCRIBE</button>
+                <p>Don't worry we don't spam</p>
+            </div>
+
+        </div>
+        <div class="box" id='box4'>
+            <div class="icon">
+                <i class="fa-brands fa-facebook" style='font-size:30px;color:rgb(112, 111, 111)'></i>
+                <i class="fa-brands fa-twitter" style='font-size:30px;color:rgb(112, 111, 111)'></i>
+                <i class="fa-brands fa-instagram" style='font-size:30px;color:rgb(112, 111, 111)'></i>
+                <i class="fa-brands fa-youtube" style='font-size:30px;color:rgb(112, 111, 111)'></i>
+            </div>
+            <div class='box'>
+                <p>Copyright &#169 2021 fabbag.com All rights reserved.</p>
+            </div>
+        </div>
+    </div>
     </div>
     
   </div>
@@ -356,7 +398,8 @@ function plusSlides(position) {
 
   // let next = document.getElementsByClassName('slides').addEventListener()
  
-  
+  //making logo_Img clickable
+
  
 
 </script>
